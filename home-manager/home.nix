@@ -1,11 +1,14 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, ... }: {
   # You can import other home-manager modules here
   imports = [
-    # If you want to use home-manager modules from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModule
+    # If you want to use modules your own flake exports (from modules/home-manager):
+    #outputs.homeManagerModules.hyprland
+    outputs.homeManagerModules.kitty
+    outputs.homeManagerModules.tmux
+
+    # Or modules exported from other flakes (such as nix-colors):
+    # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
@@ -14,7 +17,12 @@
   nixpkgs = {
     # You can add overlays here
     overlays = [
-      # If you want to use overlays exported from other flakes:
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      #outputs.overlays.additions
+      #outputs.overlays.modifications
+      #outputs.overlays.unstable-packages
+
+      # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
       # Or define it inline, for example:
@@ -26,24 +34,30 @@
     ];
     # Configure your nixpkgs instance
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
-      # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = (_: true);
     };
   };
 
-  # TODO: Set your username
   home = {
     username = "virtio";
     homeDirectory = "/home/virtio";
   };
 
+  # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
+
+  # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
-  
-  home.packages = with pkgs; [];
+  programs.rofi.enable = true;
+
+  programs.firefox.enable = true;
+
+  home.packages = with pkgs; [
+    discord
+    neofetch
+  ];
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
