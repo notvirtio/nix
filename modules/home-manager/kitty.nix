@@ -14,7 +14,7 @@
 #: individual font faces and even specify special fonts for particular
 #: characters.
 
-font_family      monospace
+font_family      Iosevka Nerd Font
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
@@ -1174,7 +1174,7 @@ mark3_background #f274bc
 
 #: Advanced {{{
 
-shell tmux
+shell .
 
 #: The shell program to execute. The default value of . means to use
 #: whatever shell is set as the default shell for the current user.

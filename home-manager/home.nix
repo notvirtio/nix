@@ -3,9 +3,11 @@
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
-    #outputs.homeManagerModules.hyprland
+    outputs.homeManagerModules.hyprland
     outputs.homeManagerModules.kitty
     outputs.homeManagerModules.tmux
+    outputs.homeManagerModules.rofi
+    outputs.homeManagerModules.scripts
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -50,13 +52,15 @@
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
-  programs.rofi.enable = true;
 
   programs.firefox.enable = true;
 
   home.packages = with pkgs; [
-    discord
-    neofetch
+    discord neofetch
+    hyprpaper cava
+    slurp grim
+    wl-clipboard wireplumber
+    qt5-wayland qt6-wayland
   ];
 
   # Nicely reload system units when changing configs

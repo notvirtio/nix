@@ -1,13 +1,25 @@
 { config, lib, pkgs, ... }:
 
 {
+  home.file.".config/hypr/hyprpaper.conf".text = ''
+    preload = ~/.bg.png
+
+    wallpaper = HDMI-A-1,~/.bg.png
+    wallpaper = HDMI-A-2,~/.bg.png
+  '';
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
     nvidiaPatches = true;
     extraConfig = ''
+exec-once = hyprpaper
+
 bind=SUPER,return,exec,kitty
+bind=SUPER,0,exec,kitty -e cava
 bind=SUPER,space,exec,rofi -show drun
+bind=SUPER,w,exec,firefox
+bind=SUPER,p,exec,sc
 
 bind=SUPER,q,killactive
 

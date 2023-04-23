@@ -11,6 +11,7 @@
 
     # Hyprland
     hyprland.url = "github:hyprwm/Hyprland/2df0d034bc4a18fafb3524401eeeceaa6b23e753";
+    hyprpaper.url = "github:hyprwm/hyprpaper";
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!

@@ -64,10 +64,26 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
 
+  programs.fish.enable = true;
   users.users.virtio = {
     isNormalUser = true;
     extraGroups = [ "wheel" "uucp" ];
+    shell = pkgs.fish;
   };
+
+  sound.enable = false;
+
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  fonts.fonts = with pkgs; [
+   (nerdfonts.override { fonts = [ "Iosevka" ]; })
+  ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.11";
