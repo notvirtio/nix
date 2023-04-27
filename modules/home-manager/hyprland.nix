@@ -24,19 +24,19 @@ env = WLR_NO_HARDWARE_CURSORS,1
 bind=SUPER,return,exec,kitty
 bind=SUPER,0,exec,kitty -e cava
 bind=SUPER,space,exec,rofi -show drun
-bind=SUPER,w,exec,firefox
-bind=SUPER,p,exec,sc
-bind=SUPER,o,exec,kitty -e ncmpc-wrap
+bind=SUPER,p,exec,firefox
+bind=SUPER,l,exec,sc
+bind=SUPER,r,exec,kitty -e ncmpc-wrap
 
 bind=SUPER,q,killactive
 
-bind=SUPER,s,togglefloating
+bind=SUPER,o,togglefloating
 bind=SUPER,m,fullscreen,1
 
-bind=SUPER,h,movefocus,l
-bind=SUPER,j,movefocus,d
-bind=SUPER,k,movefocus,u
-bind=SUPER,l,movefocus,r
+bind=SUPER,d,movefocus,l
+bind=SUPER,h,movefocus,d
+bind=SUPER,t,movefocus,u
+bind=SUPER,n,movefocus,r
 
 bind=SUPER,1,workspace,1
 bind=SUPER,2,workspace,2
