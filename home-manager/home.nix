@@ -8,6 +8,8 @@
     outputs.homeManagerModules.tmux
     outputs.homeManagerModules.rofi
     outputs.homeManagerModules.scripts
+    outputs.homeManagerModules.crt
+    outputs.homeManagerModules.desktopEntries
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -60,7 +62,8 @@
     hyprpaper cava
     slurp grim
     wl-clipboard wireplumber
-    qt5-wayland qt6-wayland
+    ncmpc yt-dlp
+    ffmpeg armcord
   ];
 
   # Nicely reload system units when changing configs

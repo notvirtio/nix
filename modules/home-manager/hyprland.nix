@@ -15,11 +15,18 @@
     extraConfig = ''
 exec-once = hyprpaper
 
+env = LIBVA_DRIVER_NAME,nvidia
+env = XDG_SESSION_TYPE,wayland
+env = GBM_BACKEND,nvidia-drm
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+env = WLR_NO_HARDWARE_CURSORS,1
+
 bind=SUPER,return,exec,kitty
 bind=SUPER,0,exec,kitty -e cava
 bind=SUPER,space,exec,rofi -show drun
 bind=SUPER,w,exec,firefox
 bind=SUPER,p,exec,sc
+bind=SUPER,o,exec,kitty -e ncmpc-wrap
 
 bind=SUPER,q,killactive
 
@@ -68,6 +75,7 @@ decoration {
 input {
   kb_options = caps:escape,grp:alt_shift_toggle
   kb_layout = us,ru
+  kb_variant = dvorak,
   accel_profile = flat
 }
 

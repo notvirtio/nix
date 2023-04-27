@@ -56,6 +56,7 @@
 
   # FIXME: Add the rest of your current configuration
   programs.hyprland.enable = true;
+  #programs.hyprland.package = pkgs.hyprland-nvidia;
   programs.hyprland.nvidiaPatches = true;
 
   # TODO: Set your hostname
@@ -63,6 +64,7 @@
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
 
   programs.fish.enable = true;
   users.users.virtio = {
@@ -79,6 +81,35 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
+  };
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware = {
+    nvidia = {
+      open = false;
+      modesetting.enable = true;
+    };
+    opengl = {
+      enable = true;
+      driSupport32Bit = true;
+    };
+  };
+
+  services.mpd.user = "virtio";
+    systemd.services.mpd.environment = {
+    XDG_RUNTIME_DIR = "/run/user/1000";
+  };
+
+  services.mpd = {
+    enable = true;
+    musicDirectory = "/home/virtio/music";
+    extraConfig = ''
+    audio_output {
+      type "pipewire"
+      name "My PipeWire Output"
+    }
+    '';
   };
 
   fonts.fonts = with pkgs; [
