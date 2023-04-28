@@ -7,4 +7,5 @@
   crt = import ./crt.nix;
   desktopEntries = import ./desktopEntries.nix;
   gpg = import ./gpg.nix;
+  rustup = import ./rustup.nix;
 }

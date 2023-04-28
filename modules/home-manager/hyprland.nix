@@ -22,6 +22,7 @@ env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 env = WLR_NO_HARDWARE_CURSORS,1
 
 bind=SUPER,return,exec,kitty
+bind=SUPERSHIFT,return,exec,kitty -e tmux attach
 bind=SUPER,0,exec,kitty -e cava
 bind=SUPER,space,exec,rofi -show drun
 bind=SUPER,w,exec,firefox

@@ -10,33 +10,11 @@
     outputs.homeManagerModules.scripts
     outputs.homeManagerModules.crt
     outputs.homeManagerModules.desktopEntries
-
-    # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
+    outputs.homeManagerModules.rustup
   ];
 
   nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      #outputs.overlays.additions
-      #outputs.overlays.modifications
-      #outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-    # Configure your nixpkgs instance
+    overlays = [];
     config = {
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
@@ -64,7 +42,7 @@
     wl-clipboard wireplumber
     ncmpc yt-dlp
     ffmpeg armcord
-    btop
+    btop killall
   ];
 
   # Nicely reload system units when changing configs

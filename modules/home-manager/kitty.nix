@@ -14,7 +14,7 @@
 #: individual font faces and even specify special fonts for particular
 #: characters.
 
-font_family      spleen 6x12
+font_family      Spleen 32x64
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
