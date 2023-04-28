@@ -5,6 +5,7 @@
   # You can import other NixOS modules here
   imports = [
     # outputs.nixosModules.example
+    outputs.nixosModules.gpg
 
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
@@ -113,6 +114,8 @@
   };
 
   fonts.fonts = with pkgs; [
+   comic-mono
+   spleen
    (nerdfonts.override { fonts = [ "Iosevka" ]; })
   ];
 

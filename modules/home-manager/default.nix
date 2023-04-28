@@ -6,4 +6,5 @@
   scripts = import ./scripts.nix;
   crt = import ./crt.nix;
   desktopEntries = import ./desktopEntries.nix;
+  gpg = import ./gpg.nix;
 }

@@ -64,6 +64,7 @@
     wl-clipboard wireplumber
     ncmpc yt-dlp
     ffmpeg armcord
+    btop
   ];
 
   # Nicely reload system units when changing configs
