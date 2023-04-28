@@ -11,6 +11,7 @@
     outputs.homeManagerModules.crt
     outputs.homeManagerModules.desktopEntries
     outputs.homeManagerModules.rustup
+    outputs.homeManagerModules.git
   ];
 
   nixpkgs = {

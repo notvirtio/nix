@@ -8,4 +8,5 @@
   desktopEntries = import ./desktopEntries.nix;
   gpg = import ./gpg.nix;
   rustup = import ./rustup.nix;
+  git = import ./git.nix;
 }
