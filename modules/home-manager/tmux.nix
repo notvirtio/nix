@@ -8,9 +8,15 @@
     prefix = "C-Space";
     clock24 = true;
 
-    plugins = with pkgs; [
-      tmuxPlugins.vim-tmux-navigator
-      tmuxPlugins.nord
+    plugins = with pkgs.tmuxPlugins; [
+      vim-tmux-navigator
+      {
+          plugin = dracula;
+          extraConfig = ''
+            set -g @dracula-show-battery false
+            set -g @dracula-plugins "time"
+          '';
+      }
     ];
 
     baseIndex = 1;
@@ -22,6 +28,11 @@ unbind v
 unbind h
 unbind %
 unbind '"'
+set -g focus-events on
+set -g status-style bg=default
+set -g status-left-length 90
+set -g status-right-length 90
+set -g status-justify centre
 
 bind v split-window -h -c "#{pane_current_path}"
 bind h split-window -v -c "#{pane_current_path}"

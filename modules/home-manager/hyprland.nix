@@ -4,8 +4,8 @@
   home.file.".config/hypr/hyprpaper.conf".text = ''
     preload = ~/.bg.png
 
-    wallpaper = HDMI-A-1,~/.bg.png
-    wallpaper = HDMI-A-2,~/.bg.png
+    wallpaper = HDMI-A-1,~/pics/bgs/dracula.png
+    wallpaper = HDMI-A-2,~/pics/bgs/dracula.png
   '';
 
   wayland.windowManager.hyprland = {
@@ -21,13 +21,13 @@ env = GBM_BACKEND,nvidia-drm
 env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 env = WLR_NO_HARDWARE_CURSORS,1
 
-bind=SUPER,return,exec,kitty
-bind=SUPERSHIFT,return,exec,kitty -e tmux attach
-bind=SUPER,0,exec,kitty -e cava
+bind=SUPER,return,exec,foot -e tmux
+bind=SUPERSHIFT,return,exec,foot -e tmux attach
+bind=SUPER,0,exec,foot -e cava
 bind=SUPER,space,exec,rofi -show drun
 bind=SUPER,w,exec,firefox
 bind=SUPER,p,exec,sc
-bind=SUPER,o,exec,kitty -e ncmpc-wrap
+bind=SUPER,o,exec,foot -e ncmpc-wrap
 
 bind=SUPER,q,killactive
 

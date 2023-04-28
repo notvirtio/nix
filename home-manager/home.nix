@@ -1,10 +1,11 @@
 
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, nix-colors, ... }: {
   # You can import other home-manager modules here
   imports = [
+    nix-colors.homeManagerModules.default
     # If you want to use modules your own flake exports (from modules/home-manager):
     outputs.homeManagerModules.hyprland
-    outputs.homeManagerModules.kitty
+    outputs.homeManagerModules.foot
     outputs.homeManagerModules.tmux
     outputs.homeManagerModules.rofi
     outputs.homeManagerModules.scripts
@@ -12,7 +13,10 @@
     outputs.homeManagerModules.desktopEntries
     outputs.homeManagerModules.rustup
     outputs.homeManagerModules.git
+    outputs.homeManagerModules.neovim
   ];
+
+  colorScheme = nix-colors.colorSchemes.dracula;
 
   nixpkgs = {
     overlays = [];
@@ -27,9 +31,6 @@
     homeDirectory = "/home/virtio";
   };
 
-  # Add stuff for your user as you see fit:
-  programs.neovim.enable = true;
-
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
@@ -37,12 +38,9 @@
   programs.firefox.enable = true;
 
   home.packages = with pkgs; [
-    discord neofetch
-    hyprpaper cava
-    slurp grim
-    wl-clipboard wireplumber
-    ncmpc yt-dlp
-    ffmpeg armcord
+    discord neofetch hyprpaper cava
+    slurp grim wl-clipboard wireplumber
+    ncmpc yt-dlp ffmpeg armcord
     btop killall
   ];
 
