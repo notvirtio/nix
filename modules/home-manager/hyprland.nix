@@ -2,7 +2,7 @@
 
 {
   home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ~/.bg.png
+    preload = ~/pics/bgs/dracula.png
 
     wallpaper = HDMI-A-1,~/pics/bgs/dracula.png
     wallpaper = HDMI-A-2,~/pics/bgs/dracula.png
