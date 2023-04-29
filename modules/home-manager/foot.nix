@@ -7,7 +7,7 @@ in {
     enable = true;
     settings = {
       main = {
-        font = "Iosevka Nerd Font:size=20";
+        font = "Iosevka Nerd Font:size=16";
       };
 
       cursor = {
