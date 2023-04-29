@@ -1,9 +1,7 @@
-
 { inputs, outputs, lib, config, pkgs, nix-colors, ... }: {
   # You can import other home-manager modules here
   imports = [
     nix-colors.homeManagerModules.default
-    # If you want to use modules your own flake exports (from modules/home-manager):
     outputs.homeManagerModules.hyprland
     outputs.homeManagerModules.foot
     outputs.homeManagerModules.tmux
@@ -19,7 +17,9 @@
   colorScheme = nix-colors.colorSchemes.dracula;
 
   nixpkgs = {
-    overlays = [];
+    overlays = [
+      outputs.overlays.additions
+    ];
     config = {
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
@@ -41,7 +41,9 @@
     discord neofetch hyprpaper cava
     slurp grim wl-clipboard wireplumber
     ncmpc yt-dlp ffmpeg armcord
-    btop killall
+    btop killall craftos-pc
+    lua53Packages.fennel fnlfmt
+    ripgrep yue
   ];
 
   # Nicely reload system units when changing configs

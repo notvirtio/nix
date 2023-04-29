@@ -40,12 +40,6 @@ end
 
 setKeys(keys)
 
-require("autoclose").setup {
-    keys = {
-        ["'"] = { escape = false, close = false, pair = "''" }
-    }
-}
-
 require("bufferline").setup {
   animation = true,
   auto_hide = true,
@@ -228,8 +222,15 @@ end
 
 require("trouble").setup{}
 
+require("autoclose").setup {
+    keys = {
+        ["'"] = { escape = false, close = false, pair = "''" }
+    }
+}
+
 require("packer").startup(function(use)
   use "pigpigyyy/Yuescript-vim"
+  use "m4xshen/autoclose.nvim"
 
   use {
     'VonHeikemen/lsp-zero.nvim',
