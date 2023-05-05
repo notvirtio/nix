@@ -231,6 +231,7 @@ require("autoclose").setup {
 require("packer").startup(function(use)
   use "pigpigyyy/Yuescript-vim"
   use "m4xshen/autoclose.nvim"
+  use "nvim-treesitter/nvim-treesitter"
 
   use {
     'VonHeikemen/lsp-zero.nvim',

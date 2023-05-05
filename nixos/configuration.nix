@@ -71,9 +71,11 @@
   programs.fish.enable = true;
   users.users.virtio = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "uucp" ];
+    extraGroups = [ "wheel" "uucp" "docker" ];
     shell = pkgs.fish;
   };
+
+  virtualisation.docker.enable = true;
 
   sound.enable = false;
 
@@ -102,6 +104,8 @@
     systemd.services.mpd.environment = {
     XDG_RUNTIME_DIR = "/run/user/1000";
   };
+
+  services.gvfs.enable = true;
 
   services.mpd = {
     enable = true;

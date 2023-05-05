@@ -2,10 +2,10 @@
 
 {
   home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ~/pics/bgs/dracula.png
+    preload = ~/pics/bgs/current.png
 
-    wallpaper = HDMI-A-1,~/pics/bgs/dracula.png
-    wallpaper = HDMI-A-2,~/pics/bgs/dracula.png
+    wallpaper = HDMI-A-1,~/pics/bgs/current.png
+    wallpaper = HDMI-A-2,~/pics/bgs/current.png
   '';
 
   wayland.windowManager.hyprland = {
@@ -18,7 +18,6 @@ exec-once = hyprpaper
 env = LIBVA_DRIVER_NAME,nvidia
 env = XDG_SESSION_TYPE,wayland
 env = GBM_BACKEND,nvidia-drm
-env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 env = WLR_NO_HARDWARE_CURSORS,1
 
 bind=SUPER,return,exec,foot -e tmux
@@ -27,12 +26,15 @@ bind=SUPER,0,exec,foot -e cava
 bind=SUPER,space,exec,rofi -show drun
 bind=SUPER,w,exec,firefox
 bind=SUPER,p,exec,sc
+bind=SUPERSHIFT,p,exec,scwin
 bind=SUPER,o,exec,foot -e ncmpc-wrap
+bind=SUPER,f,exec,export GTK_THEME=Dracula; nautilus
 
 bind=SUPER,q,killactive
 
 bind=SUPER,s,togglefloating
 bind=SUPER,m,fullscreen,1
+bind=SUPERSHIFT,m,fullscreen,0
 
 bind=SUPER,h,movefocus,l
 bind=SUPER,j,movefocus,d

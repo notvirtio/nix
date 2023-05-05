@@ -43,8 +43,24 @@
     ncmpc yt-dlp ffmpeg armcord
     btop killall craftos-pc
     lua53Packages.fennel fnlfmt
-    ripgrep yue
+    ripgrep yue rust-analyzer
+    imagemagick qbittorrent telegram-desktop
+    gnome.nautilus mpv cliscord
+    imv prismlauncher pkg-config
+    obs-studio wf-recorder
   ];
+
+  gtk = {
+      enable = true;
+      cursorTheme = {
+        name = "Dracula-cursors";
+        package = pkgs.dracula-theme;
+      };
+      theme = {
+        package = pkgs.dracula-theme;
+        name = "Dracula";
+      };
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

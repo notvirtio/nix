@@ -21,7 +21,7 @@
 
     baseIndex = 1;
     extraConfig = ''
-unbind C-b
+set-option -g prefix2 C-a
 unbind r
 
 unbind v
