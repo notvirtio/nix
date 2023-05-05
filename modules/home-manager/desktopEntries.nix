@@ -10,7 +10,7 @@
     };
     craftos = {
       name = "CraftOS-PC";
-      exec = "SDL_VIDEODRIVER=wayland craftos";
+      exec = "env SDL_VIDEODRIVER=wayland craftos";
       terminal = false;
       categories = [ "Utility" "Development" ];
     };

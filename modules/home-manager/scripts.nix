@@ -12,6 +12,11 @@ let
     grim -g "$win" - | tee ~/pics/sc/$name.png | wl-copy -t image/png
     find ~/pics/sc -size 0 -delete
   '';
+  clip = pkgs.writeShellScriptBin "clip" ''
+    notify-send "Recording clip..."
+    wf-recorder -g "0,0 1920x1080" -c h264_nvenc -f $HOME/clips/ls`(date +%s)`.mp4
+    notify-send "Done"
+  '';
   ncmpc-wrap = pkgs.writeShellScriptBin "ncmpc-wrap" ''
     ncmpc -h 127.0.0.1 --no-colors
   '';
