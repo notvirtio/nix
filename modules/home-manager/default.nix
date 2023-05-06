@@ -10,4 +10,5 @@
   rustup = import ./rustup.nix;
   git = import ./git.nix;
   neovim = import ./nvim.nix;
+  qutebrowser = import ./qute.nix;
 }

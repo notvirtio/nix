@@ -27,9 +27,10 @@ bind=SUPER,space,exec,rofi -show drun
 bind=SUPER,w,exec,firefox
 bind=SUPER,p,exec,sc
 bind=SUPERSHIFT,p,exec,scwin
+bind=SUPER,i,exec,foot -T FootFloat -e clip
 bind=SUPER,o,exec,foot -e ncmpc-wrap
-bind=SUPER,f,exec,export GTK_THEME=Dracula; nautilus
-
+bind=SUPER,f,exec,nemo
+windowrule=float,title:^(FootFloat)(.*)$
 bind=SUPER,q,killactive
 
 bind=SUPER,s,togglefloating

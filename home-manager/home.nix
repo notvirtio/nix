@@ -12,6 +12,7 @@
     outputs.homeManagerModules.rustup
     outputs.homeManagerModules.git
     outputs.homeManagerModules.neovim
+    #outputs.homeManagerModules.qutebrowser
   ];
 
   colorScheme = nix-colors.colorSchemes.dracula;
@@ -45,9 +46,10 @@
     lua53Packages.fennel fnlfmt
     ripgrep yue rust-analyzer
     imagemagick qbittorrent telegram-desktop
-    gnome.nautilus mpv cliscord
+    mpv cliscord wf-recorder
     imv prismlauncher pkg-config
-    obs-studio wf-recorder
+    obs-studio cinnamon.nemo bitwarden
+    openvpn
   ];
 
   gtk = {

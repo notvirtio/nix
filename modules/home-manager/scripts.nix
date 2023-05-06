@@ -13,16 +13,15 @@ let
     find ~/pics/sc -size 0 -delete
   '';
   clip = pkgs.writeShellScriptBin "clip" ''
-    notify-send "Recording clip..."
+    sleep 3;
     wf-recorder -g "0,0 1920x1080" -c h264_nvenc -f $HOME/clips/ls`(date +%s)`.mp4
-    notify-send "Done"
   '';
   ncmpc-wrap = pkgs.writeShellScriptBin "ncmpc-wrap" ''
     ncmpc -h 127.0.0.1 --no-colors
   '';
 in {
   home.packages = with pkgs; [
-   ncmpc-wrap sc scwin
+   ncmpc-wrap sc scwin clip
    # dependencies
    jq
   ];

@@ -62,6 +62,7 @@
   networking.hostName = "NixBTW";
   networking.extraHosts = ''
     192.168.100.100 pi
+    46.29.236.25 vps
   '';
 
   boot.loader.grub.enable = true;
@@ -86,6 +87,11 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+  };
+
+services.openvpn.servers = {
+  main = {
+      config = '' config /home/virtio/.main.ovpn ''; };
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
