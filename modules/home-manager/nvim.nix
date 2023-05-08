@@ -9,7 +9,7 @@
       presence-nvim fennel-vim vim-tmux-navigator
       trouble-nvim barbar-nvim telescope-nvim
       nvim-web-devicons plenary-nvim vim-closer
-      vim-endwise
+      vim-endwise moonscript-vim
     ];
     extraLuaConfig = lib.fileContents ../nvim.lua;
     enable = true;

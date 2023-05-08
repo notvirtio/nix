@@ -14,7 +14,7 @@ let
   '';
   clip = pkgs.writeShellScriptBin "clip" ''
     sleep 3;
-    wf-recorder -g "0,0 1920x1080" -c h264_nvenc -f $HOME/clips/ls`(date +%s)`.mp4
+    wf-recorder -g "0,0 1920x1080" -c h264_nvenc -f $HOME/clips/`(date +%s)`.mp4
   '';
   ncmpc-wrap = pkgs.writeShellScriptBin "ncmpc-wrap" ''
     ncmpc -h 127.0.0.1 --no-colors
