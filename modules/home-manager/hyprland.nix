@@ -19,6 +19,7 @@ env = LIBVA_DRIVER_NAME,nvidia
 env = XDG_SESSION_TYPE,wayland
 env = GBM_BACKEND,nvidia-drm
 env = WLR_NO_HARDWARE_CURSORS,1
+env = MOZ_ENABLE_WAYLAND,1
 
 bind=SUPER,return,exec,foot -e tmux
 bind=SUPERSHIFT,return,exec,foot -e tmux attach

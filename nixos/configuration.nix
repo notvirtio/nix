@@ -89,9 +89,22 @@
     jack.enable = true;
   };
 
-services.openvpn.servers = {
-  main = {
-      config = '' config /home/virtio/.main.ovpn ''; };
+  networking.wg-quick.interfaces = {
+    wg0 = {
+      address = [ "10.66.66.10/32" "fd42:42:42::10/128" ];
+      dns = [ "1.1.1.1" "1.0.0.1" ];
+      privateKeyFile = "/home/virtio/.wgprivkey";
+      
+      peers = [
+        {
+          publicKey = "7ReuCcTa98WVlkWBYv7SwSBudgpmkrpZzF9MQkkOM3A=";
+          presharedKeyFile = "/home/virtio/.wgpresharedkey";
+          allowedIPs = [ "0.0.0.0/0" "::/0" ];
+          endpoint = "46.29.236.25:58248";
+          persistentKeepalive = 25;
+        }
+      ];
+    };
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];

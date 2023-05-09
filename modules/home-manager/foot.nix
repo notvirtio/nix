@@ -7,7 +7,7 @@ in {
     enable = true;
     settings = {
       main = {
-        font = "Spleen 32x64:size=18";
+        font = "Iosevka Nerd Font:size=18";
       };
 
       cursor = {
