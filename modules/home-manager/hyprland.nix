@@ -79,7 +79,8 @@ decoration {
 
 input {
   kb_options = caps:escape,grp:alt_shift_toggle
-  kb_layout = us,ru
+  kb_layout = us,us,ru
+  kb_variant = ,dvorak,
   accel_profile = flat
 }
 

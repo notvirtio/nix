@@ -49,7 +49,7 @@
     mpv cliscord wf-recorder
     imv prismlauncher pkg-config
     obs-studio cinnamon.nemo bitwarden
-    openvpn tic80
+    openvpn tic80 gimp
   ];
 
   gtk = {
