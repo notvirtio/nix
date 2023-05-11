@@ -22,7 +22,7 @@ env = WLR_NO_HARDWARE_CURSORS,1
 env = MOZ_ENABLE_WAYLAND,1
 
 bind=SUPER,return,exec,alacritty
-bind=SUPERSHIFT,return,exec,alacritty
+bind=SUPERSHIFT,return,exec,alacritty -e tmux attach
 bind=SUPER,0,exec,alacritty -e cava
 bind=SUPER,space,exec,rofi -show drun
 bind=SUPER,w,exec,firefox

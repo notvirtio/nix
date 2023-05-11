@@ -17,12 +17,6 @@ in {
     cursor.shape = "Underline";
     shell = {
       program = "tmux";
-      args = [
-        "new"
-        "-A"
-        "-s"
-        "main"
-      ];
     };
 
     colors = {
