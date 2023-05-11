@@ -1,6 +1,7 @@
 {
   hyprland = import ./hyprland.nix;
   foot = import ./foot.nix;
+  alacritty = import ./alacritty.nix;
   tmux = import ./tmux.nix;
   rofi = import ./rofi.nix;
   scripts = import ./scripts.nix;

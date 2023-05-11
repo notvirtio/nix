@@ -13,7 +13,6 @@ let
     find ~/pics/sc -size 0 -delete
   '';
   clip = pkgs.writeShellScriptBin "clip" ''
-    sleep 3;
     wf-recorder -g "0,0 1920x1080" -c h264_nvenc -f $HOME/clips/`(date +%s)`.mp4 -a
   '';
   ncmpc-wrap = pkgs.writeShellScriptBin "ncmpc-wrap" ''

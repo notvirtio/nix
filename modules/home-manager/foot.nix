@@ -7,11 +7,11 @@ in {
     enable = true;
     settings = {
       main = {
-        font = "Iosevka Nerd Font:size=18";
+        font = "Mononoki Nerd Font:size=18";
       };
 
       cursor = {
-        style = "beam";
+        style = "underline";
       };
 
       colors = {

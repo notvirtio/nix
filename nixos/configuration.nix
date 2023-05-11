@@ -138,9 +138,8 @@
   };
 
   fonts.fonts = with pkgs; [
-   comic-mono
    spleen
-   (nerdfonts.override { fonts = [ "Iosevka" ]; })
+   (nerdfonts.override { fonts = [ "Mononoki" ]; })
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

@@ -3,7 +3,7 @@
   imports = [
     nix-colors.homeManagerModules.default
     outputs.homeManagerModules.hyprland
-    outputs.homeManagerModules.foot
+    outputs.homeManagerModules.alacritty
     outputs.homeManagerModules.tmux
     outputs.homeManagerModules.rofi
     outputs.homeManagerModules.scripts
