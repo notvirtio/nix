@@ -1,23 +1,17 @@
 { config, lib, pkgs, ... }:
 
-let
-  colors = config.colorScheme.colors;
+let colors = config.colorScheme.colors;
 in {
   programs.alacritty.enable = true;
   programs.alacritty.settings = {
-    window = {
-      opacity = 0.8;
-    };
+    window.opacity = 0.8;
 
     font = {
-      normal.family = "Mononoki Nerd Font";
-      size = 16;
+      normal.family = "Iosevka Nerd Font";
+      size = 18;
     };
 
     cursor.shape = "Underline";
-    shell = {
-      program = "tmux";
-    };
 
     colors = {
       primary = {

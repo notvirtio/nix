@@ -53,7 +53,6 @@ do
         ["<A-.>"] = ":BufferNext<CR>",
         ["<A-w>"] = ":BufferClose<CR>"
   }
-  vim.cmd("colorscheme dracula")
   
   setKeys(keys)
 end

@@ -10,6 +10,6 @@
       key = "E2A038A73BC2239D";
     };
   };
-  
+
   programs.lazygit.enable = true;
 }

@@ -30,8 +30,8 @@ in stdenv.mkDerivation rec {
         TIC-80/CMakeLists.txt
   '';
 
-  cmakeFlags = (if withPro then [ "-DBUILD_PRO=On" ] else [])
-               ++ ["-DBUILD_SDLGPU=On"];
+  cmakeFlags = (if withPro then [ "-DBUILD_PRO=On" ] else [ ])
+    ++ [ "-DBUILD_SDLGPU=On" ];
   enableParallelBuilding = true;
   dontStrip = true;
   buildInputs = [ cmake pkg-config wayland-protocols ] ++ dlopenBuildInputs;

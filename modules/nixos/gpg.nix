@@ -9,7 +9,5 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    pinentry-qt
-  ];
+  environment.systemPackages = with pkgs; [ pinentry-qt ];
 }

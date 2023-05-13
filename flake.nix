@@ -10,7 +10,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Hyprland
-    hyprland.url = "github:hyprwm/Hyprland/2df0d034bc4a18fafb3524401eeeceaa6b23e753";
+    hyprland.url =
+      "github:hyprwm/Hyprland/2df0d034bc4a18fafb3524401eeeceaa6b23e753";
     hyprpaper.url = "github:hyprwm/hyprpaper";
 
     # Shameless plug: looking for a way to nixify your themes and make
@@ -18,9 +19,8 @@
     nix-colors.url = "github:misterio77/nix-colors";
   };
   outputs = { self, nixpkgs, home-manager, hyprland, nix-colors, ... }@inputs:
-   let
-     inherit (self) outputs;
-   in {
+    let inherit (self) outputs;
+    in {
       overlays = import ./overlays { inherit inputs outputs; };
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
@@ -30,7 +30,7 @@
           specialArgs = { inherit inputs outputs; };
           modules = [
             hyprland.nixosModules.default
-            {programs.hyprland.enable = true;}
+            { programs.hyprland.enable = true; }
             ./nixos/configuration.nix
           ];
         };
@@ -42,7 +42,7 @@
           extraSpecialArgs = { inherit inputs outputs nix-colors; };
           modules = [
             hyprland.homeManagerModules.default
-            {wayland.windowManager.hyprland.enable = true;}
+            { wayland.windowManager.hyprland.enable = true; }
             ./home-manager/home.nix
           ];
         };

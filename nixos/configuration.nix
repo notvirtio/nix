@@ -1,57 +1,56 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 
-  { inputs, outputs, lib, config, pkgs, ... }: {
-    # You can import other NixOS modules here
-    imports = [
-      # outputs.nixosModules.example
-      outputs.nixosModules.gpg
+{ inputs, outputs, lib, config, pkgs, ... }: {
+  # You can import other NixOS modules here
+  imports = [
+    # outputs.nixosModules.example
+    outputs.nixosModules.gpg
 
-      # inputs.hardware.nixosModules.common-cpu-amd
-      # inputs.hardware.nixosModules.common-ssd
+    # inputs.hardware.nixosModules.common-cpu-amd
+    # inputs.hardware.nixosModules.common-ssd
 
-      # You can also split up your configuration and import pieces of it here:
-      # ./users.nix
+    # You can also split up your configuration and import pieces of it here:
+    # ./users.nix
 
-      # Import your generated (nixos-generate-config) hardware configuration
-      ./hardware-configuration.nix
+    # Import your generated (nixos-generate-config) hardware configuration
+    ./hardware-configuration.nix
+  ];
+
+  nixpkgs = {
+    overlays = [
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      outputs.overlays.additions
+
+      # You can also add overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
     ];
+    # Configure your nixpkgs instance
+    config = { allowUnfree = true; };
+  };
 
-    nixpkgs = {
-      overlays = [
-        # Add overlays your own flake exports (from overlays and pkgs dir):
-        outputs.overlays.additions
+  nix = {
+    # This will add each flake input as a registry
+    # To make nix3 commands consistent with your flake
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
 
-        # You can also add overlays exported from other flakes:
-        # neovim-nightly-overlay.overlays.default
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}")
+      config.nix.registry;
 
-        # Or define it inline, for example:
-        # (final: prev: {
-        #   hi = final.hello.overrideAttrs (oldAttrs: {
-        #     patches = [ ./change-hello-to-hi.patch ];
-        #   });
-        # })
-      ];
-      # Configure your nixpkgs instance
-      config = {
-        allowUnfree = true;
-      };
+    settings = {
+      # Enable flakes and new 'nix' command
+      experimental-features = "nix-command flakes";
+      # Deduplicate and optimize nix store
+      auto-optimise-store = true;
     };
-
-    nix = {
-      # This will add each flake input as a registry
-      # To make nix3 commands consistent with your flake
-      registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
-
-      nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
-
-      settings = {
-        # Enable flakes and new 'nix' command
-        experimental-features = "nix-command flakes";
-        # Deduplicate and optimize nix store
-        auto-optimise-store = true;
-      };
-    };
+  };
 
   # FIXME: Add the rest of your current configuration
   programs.hyprland.enable = true;
@@ -65,9 +64,13 @@
     46.29.236.25 vps
   '';
 
+  time.timeZone = "Europe/Moscow";
+
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
+
+  boot.binfmt.emulatedSystems = [ "armv7l-linux" ];
 
   programs.fish.enable = true;
   users.users.virtio = {
@@ -94,16 +97,14 @@
       address = [ "10.66.66.10/32" "fd42:42:42::10/128" ];
       dns = [ "1.1.1.1" "1.0.0.1" ];
       privateKeyFile = "/home/virtio/.wgprivkey";
-      
-      peers = [
-        {
-          publicKey = "7ReuCcTa98WVlkWBYv7SwSBudgpmkrpZzF9MQkkOM3A=";
-          presharedKeyFile = "/home/virtio/.wgpresharedkey";
-          allowedIPs = [ "0.0.0.0/0" "::/0" ];
-          endpoint = "46.29.236.25:58248";
-          persistentKeepalive = 25;
-        }
-      ];
+
+      peers = [{
+        publicKey = "7ReuCcTa98WVlkWBYv7SwSBudgpmkrpZzF9MQkkOM3A=";
+        presharedKeyFile = "/home/virtio/.wgpresharedkey";
+        allowedIPs = [ "0.0.0.0/0" "::/0" ];
+        endpoint = "46.29.236.25:58248";
+        persistentKeepalive = 25;
+      }];
     };
   };
 
@@ -120,9 +121,7 @@
   };
 
   services.mpd.user = "virtio";
-    systemd.services.mpd.environment = {
-    XDG_RUNTIME_DIR = "/run/user/1000";
-  };
+  systemd.services.mpd.environment = { XDG_RUNTIME_DIR = "/run/user/1000"; };
 
   services.gvfs.enable = true;
 
@@ -130,17 +129,14 @@
     enable = true;
     musicDirectory = "/home/virtio/music";
     extraConfig = ''
-    audio_output {
-      type "pipewire"
-      name "My PipeWire Output"
-    }
+      audio_output {
+        type "pipewire"
+        name "My PipeWire Output"
+      }
     '';
   };
 
-  fonts.fonts = with pkgs; [
-   spleen
-   (nerdfonts.override { fonts = [ "Mononoki" ]; })
-  ];
+  fonts.fonts = with pkgs; [ (nerdfonts.override { fonts = [ "Iosevka" ]; }) ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.11";

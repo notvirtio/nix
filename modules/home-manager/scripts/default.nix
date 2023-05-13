@@ -18,10 +18,19 @@ let
   ncmpc-wrap = pkgs.writeShellScriptBin "ncmpc-wrap" ''
     ncmpc -h 127.0.0.1 --no-colors
   '';
+  config-reload = pkgs.writeShellScriptBin "config-reload" ''
+    pkill -x hyprpaper && hyprpaper &
+    tmux source ~/.config/tmux/tmux.conf
+  '';
 in {
   home.packages = with pkgs; [
-   ncmpc-wrap sc scwin clip
-   # dependencies
-   jq pavucontrol
+    ncmpc-wrap
+    sc
+    scwin
+    clip
+    config-reload
+    # dependencies
+    jq
+    pavucontrol
   ];
 }

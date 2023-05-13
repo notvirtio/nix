@@ -1,23 +1,18 @@
 { config, lib, pkgs, nix-colors, ... }:
 
-let
-  colors = config.colorScheme.colors;
+let colors = config.colorScheme.colors;
 in {
   programs.foot = {
     enable = true;
     settings = {
-      main = {
-        font = "Mononoki Nerd Font:size=18";
-      };
+      main = { font = "Mononoki Nerd Font:size=18"; };
 
-      cursor = {
-        style = "underline";
-      };
+      cursor = { style = "underline"; };
 
       colors = {
         background = "${colors.base00}";
         foreground = "${colors.base05}";
-        
+
         regular0 = "${colors.base00}";
         regular1 = "${colors.base01}";
         regular2 = "${colors.base02}";
@@ -37,9 +32,7 @@ in {
         bright7 = "${colors.base0F}";
       };
 
-      mouse = {
-        hide-when-typing = "yes";
-      };
+      mouse = { hide-when-typing = "yes"; };
     };
   };
 }
