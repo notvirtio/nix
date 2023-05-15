@@ -72,6 +72,7 @@ in {
     bitwarden
     tic80
     gimp
+    steam
   ];
 
   gtk = {
