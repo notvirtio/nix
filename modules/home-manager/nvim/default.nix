@@ -34,4 +34,14 @@ in {
     enable = true;
     defaultEditor = true;
   };
+
+  home.packages = [ pkgs.neovide ];
+  xdg.desktopEntries = {
+    neovide = {
+      name = "Neovide";
+      exec = "env -u WAYLAND_DISPLAY neovide";
+      terminal = false;
+      categories = [ "Utility" "TextEditor" ];
+    };
+  };
 }

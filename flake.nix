@@ -1,5 +1,5 @@
 {
-  description = "Your new nix config";
+  description = "Funky";
 
   inputs = {
     # Nixpkgs
@@ -31,7 +31,7 @@
           modules = [
             hyprland.nixosModules.default
             { programs.hyprland.enable = true; }
-            ./nixos/configuration.nix
+            ./nixos/desktop.nix
           ];
         };
       };
@@ -43,7 +43,7 @@
           modules = [
             hyprland.homeManagerModules.default
             { wayland.windowManager.hyprland.enable = true; }
-            ./home-manager/home.nix
+            ./home-manager/desktop.nix
           ];
         };
       };

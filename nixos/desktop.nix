@@ -14,7 +14,7 @@
     # ./users.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
-    ./hardware-configuration.nix
+    ./desktop-hardware.nix
   ];
 
   nixpkgs = {
@@ -92,6 +92,9 @@
     jack.enable = true;
   };
 
+  networking.firewall = {
+    allowedUDPPorts = [ 51820 ];
+  };
   networking.wg-quick.interfaces = {
     wg0 = {
       address = [ "10.66.66.10/32" "fd42:42:42::10/128" ];

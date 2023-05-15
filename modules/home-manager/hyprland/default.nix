@@ -36,7 +36,7 @@ in {
       bind=SUPER,p,exec,sc
       bind=SUPERSHIFT,p,exec,scwin
       bind=SUPER,i,exec,alacritty -T TermFloat -e clip
-      bind=SUPER,o,exec,alacritty -e ncmpc-wrap
+      bind=SUPER,o,exec,alacritty -T TermFloat -e ncmpc-wrap
       bind=SUPER,f,exec,nemo
       windowrule=float,title:^(TermFloat)(.*)$
       bind=SUPER,q,killactive
@@ -87,8 +87,7 @@ in {
 
       input {
         kb_options = caps:escape,grp:alt_shift_toggle
-        kb_layout = us,us,ru
-        kb_variant = ,dvorak,
+        kb_layout = us,ru
         accel_profile = flat
       }
 

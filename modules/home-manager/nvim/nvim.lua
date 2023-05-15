@@ -17,7 +17,7 @@ vim.opt.backup = false
 vim.g.mapleader = " "
 
 if vim.g.neovide then
-    vim.opt.guifont = { "Mononoki Nerd Font:h20" }
+    vim.opt.guifont = { "Iosevka Nerd Font:h20" }
     vim.g.neovide_hide_mouse_when_typing = true
 
     vim.g.neovide_cursor_animation_length = 0.1
@@ -27,18 +27,11 @@ end
 
 vim.cmd("set cb=unnamedplus")
 
-local keys = {
-    ["<A-c>"] = ":BufferClose<CR>",
-    ["<A-Enter>"] = function() vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen end,
-}
-
 local function setKeys(keys)
     for k, v in pairs(keys) do
         vim.keymap.set("n", k, v)
     end
 end
-
-setKeys(keys)
 
 require("bufferline").setup {
   animation = true,
@@ -49,9 +42,12 @@ require("bufferline").setup {
 
 do
   local keys = {
-        ["<A-,>"] = ":BufferPrevious<CR>",
-        ["<A-.>"] = ":BufferNext<CR>",
-        ["<A-w>"] = ":BufferClose<CR>"
+    ["<A-,>"] = ":BufferPrevious<CR>",
+    ["<A-.>"] = ":BufferNext<CR>",
+    ["<A-w>"] = ":BufferClose<CR>",
+    ["<A-c>"] = ":BufferClose<CR>",
+    ["<C-w>h"] = ":split<CR>",
+    ["<A-Enter>"] = function() vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen end,
   }
   
   setKeys(keys)

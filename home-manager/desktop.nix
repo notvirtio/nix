@@ -1,6 +1,6 @@
 { inputs, outputs, lib, config, pkgs, nix-colors, ... }:
 
-let inherit (nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme colorSchemeFromPicture;
+let inherit (nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
 in {
   # You can import other home-manager modules here
   imports = [

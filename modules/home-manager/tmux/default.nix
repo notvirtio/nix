@@ -17,8 +17,8 @@ in {
       set -g default-terminal "screen-256color"
       unbind r
 
-      set -g window-style 'fg=terminal,bg=terminal'
-      set -g window-active-style 'fg=terminal,bg=terminal'
+      set -g window-style 'fg=terminal,bg=black'
+      set -g window-active-style 'fg=terminal,bg=black'
 
       unbind v
       unbind h
