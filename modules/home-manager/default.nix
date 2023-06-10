@@ -11,4 +11,5 @@
   neovim = import ./nvim;
   rofi = import ./rofi;
   fish = import ./fish;
+  mako = import ./mako;
 }

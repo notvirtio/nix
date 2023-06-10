@@ -19,6 +19,9 @@ in {
 
     interactiveShellInit = ''
       sh ${shellThemeFromScheme { scheme = config.colorScheme; }}
+      set PATH "$HOME/.cargo/bin:$PATH"
+      export RUSTC_WRAPPER="$(whereis sccache | awk '{ print $2 }')"
+      export CARGO_INCREMENTAL=0
       starship init fish | source
     '';
 

@@ -15,12 +15,30 @@ let
   clip = pkgs.writeShellScriptBin "clip" ''
     wf-recorder -g "0,0 1920x1080" -c h264_nvenc -f $HOME/clips/`(date +%s)`.mp4 -a
   '';
+  config-reload = pkgs.writeShellScriptBin "config-reload" ''
+    pkill -x hyprpaper
+    hyprpaper &
+    tmux source ~/.config/tmux/tmux.conf
+  '';
   ncmpc-wrap = pkgs.writeShellScriptBin "ncmpc-wrap" ''
+    #!/usr/bin/env sh
     ncmpc -h 127.0.0.1 --no-colors
   '';
-  config-reload = pkgs.writeShellScriptBin "config-reload" ''
-    pkill -x hyprpaper && hyprpaper &
-    tmux source ~/.config/tmux/tmux.conf
+  hypr-toggle = pkgs.writeShellScriptBin "hypr-toggle" ''
+    #!/usr/bin/env sh
+    HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==2{print $2}')
+    if [ "$HYPRGAMEMODE" = 1 ] ; then
+        hyprctl --batch "\
+            keyword animations:enabled 0;\
+            keyword decoration:drop_shadow 0;\
+            keyword decoration:blur 0;\
+            keyword general:gaps_in 0;\
+            keyword general:gaps_out 0;\
+            keyword general:border_size 1;\
+            keyword decoration:rounding 0"
+        exit
+    fi
+    hyprctl reload
   '';
 in {
   home.packages = with pkgs; [
@@ -29,6 +47,7 @@ in {
     scwin
     clip
     config-reload
+    hypr-toggle
     # dependencies
     jq
     pavucontrol

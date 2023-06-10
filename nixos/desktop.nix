@@ -57,6 +57,9 @@
   #programs.hyprland.package = pkgs.hyprland-nvidia;
   programs.hyprland.nvidiaPatches = true;
 
+  services.xserver.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+
   # TODO: Set your hostname
   networking.hostName = "NixBTW";
   networking.extraHosts = ''
@@ -70,16 +73,16 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  boot.binfmt.emulatedSystems = [ "armv7l-linux" ];
-
   programs.fish.enable = true;
   users.users.virtio = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "uucp" "docker" ];
+    extraGroups = [ "wheel" "uucp" "docker" "libvirtd" ];
     shell = pkgs.fish;
   };
+  programs.dconf.enable = true;
 
   virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
 
   sound.enable = false;
 
@@ -92,9 +95,7 @@
     jack.enable = true;
   };
 
-  networking.firewall = {
-    allowedUDPPorts = [ 51820 ];
-  };
+  networking.firewall = { allowedUDPPorts = [ 51820 ]; };
   networking.wg-quick.interfaces = {
     wg0 = {
       address = [ "10.66.66.10/32" "fd42:42:42::10/128" ];
@@ -121,6 +122,7 @@
       enable = true;
       driSupport32Bit = true;
     };
+    opentabletdriver = { enable = true; };
   };
 
   services.mpd.user = "virtio";

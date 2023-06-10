@@ -1,13 +1,18 @@
 { config, lib, pkgs, nix-colors, ... }:
 
-let inherit (nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
+let
+  inherit (nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
   wallpaper = nixWallpaperFromScheme {
     scheme = config.colorScheme;
     width = 1920;
     height = 1080;
     logoScale = 6.0;
   };
+  colors = config.colorScheme.colors;
 in {
+
+  home.packages = with pkgs; [ hyprpicker ];
+
   xdg.configFile."hypr/hyprpaper.conf".text = ''
     preload = ${wallpaper}
 
@@ -28,19 +33,22 @@ in {
       env = WLR_NO_HARDWARE_CURSORS,1
       env = MOZ_ENABLE_WAYLAND,1
 
+      windowrule=float,title:^(TermFloat)(.*)$
+
+      bind=SUPER,u,exec,hyprpicker -a
       bind=SUPER,return,exec,alacritty -e tmux -2
       bind=SUPERSHIFT,return,exec,alacritty -e tmux -2 attach
-      bind=SUPER,0,exec,alacritty -e cava
       bind=SUPER,space,exec,rofi -show drun
       bind=SUPER,w,exec,firefox
       bind=SUPER,p,exec,sc
       bind=SUPERSHIFT,p,exec,scwin
       bind=SUPER,i,exec,alacritty -T TermFloat -e clip
       bind=SUPER,o,exec,alacritty -T TermFloat -e ncmpc-wrap
-      bind=SUPER,f,exec,nemo
-      windowrule=float,title:^(TermFloat)(.*)$
+      bind=SUPER,f,exec,pcmanfm
       bind=SUPER,q,killactive
       bind=SUPER,MINUS,exec,config-reload
+
+      bind=SUPER,g,exec,hypr-toggle
 
       bind=SUPER,s,togglefloating
       bind=SUPER,m,fullscreen,1
@@ -78,11 +86,10 @@ in {
         gaps_out = 40
         gaps_in = 10
         no_cursor_warps = true
-      }
-
-      decoration {
-        rounding = 8
-        drop_shadow = false
+        col.active_border=0xff${colors.base0C}
+        col.inactive_border=0xff${colors.base02}
+        col.group_border_active=0xff${colors.base0B}
+        col.group_border=0xff${colors.base04}
       }
 
       input {

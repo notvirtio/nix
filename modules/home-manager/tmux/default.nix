@@ -17,8 +17,8 @@ in {
       set -g default-terminal "screen-256color"
       unbind r
 
-      set -g window-style 'fg=terminal,bg=black'
-      set -g window-active-style 'fg=terminal,bg=black'
+      set -g window-style 'fg=terminal,bg=terminal'
+      set -g window-active-style 'fg=terminal,bg=terminal'
 
       unbind v
       unbind h
@@ -32,6 +32,8 @@ in {
 
       bind v split-window -h -c "#{pane_current_path}"
       bind h split-window -v -c "#{pane_current_path}"
+
+      bind f send-keys "nvim $(fzf)" Enter
 
       bind n command-prompt "rename window '%%'"
       bind w new-window -c "#{pane_current_path}"

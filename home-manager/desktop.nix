@@ -15,9 +15,10 @@ in {
     outputs.homeManagerModules.git
     outputs.homeManagerModules.neovim
     outputs.homeManagerModules.fish
+    outputs.homeManagerModules.mako
   ];
 
-  colorScheme = nix-colors.colorSchemes.ayu-dark;
+  colorScheme = nix-colors.colorSchemes.catppuccin-frappe;
 
   nixpkgs = {
     overlays = [ outputs.overlays.additions ];
@@ -53,7 +54,6 @@ in {
     armcord
     btop
     killall
-    craftos-pc
     lua53Packages.fennel
     fnlfmt
     ripgrep
@@ -68,11 +68,22 @@ in {
     prismlauncher
     pkg-config
     obs-studio
-    cinnamon.nemo
+    pcmanfm
     bitwarden
     tic80
     gimp
     steam
+    gzdoom
+    gamescope
+    qpwgraph
+    cool-retro-term
+    ark
+    protontricks
+    fzf
+    sshfs
+    craftos-pc
+    virt-manager
+    sccache
   ];
 
   gtk = {
