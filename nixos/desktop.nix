@@ -62,7 +62,7 @@
     enable = true;
     settings.Autologin = {
       User = "virtio";
-      Session = "Hyprland.desktop";
+      Session = "hyprland.desktop";
     };
   };
 

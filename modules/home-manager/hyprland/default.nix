@@ -51,7 +51,7 @@ in {
       bind=SUPER, return, exec, alacritty -e tmux
       bind=SUPERSHIFT, return, exec, alacritty -e tmux attach
       bind=SUPER, space, exec, rofi -show drun
-      bind=SUPER, p, exec, firefox
+      bind=SUPER, p, exec, qutebrowser
       bind=SUPER, l, exec, sc
       bind=SUPERSHIFT, l, exec, scwin
       bind=SUPER, c, exec, alacritty -T TermFloat -e clip
