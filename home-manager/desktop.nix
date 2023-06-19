@@ -37,8 +37,6 @@ in {
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
-  programs.firefox.enable = true;
-
   home.packages = with pkgs; [
     discord
     neofetch
@@ -90,6 +88,7 @@ in {
     wine
     winetricks
     p7zip
+    qutebrowser
   ];
 
   gtk = {
