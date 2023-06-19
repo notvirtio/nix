@@ -18,7 +18,7 @@ in {
     outputs.homeManagerModules.mako
   ];
 
-  colorScheme = nix-colors.colorSchemes.catppuccin-frappe;
+  colorScheme = nix-colors.colorSchemes.ayu-dark;
 
   nixpkgs = {
     overlays = [ outputs.overlays.additions ];
@@ -50,7 +50,7 @@ in {
     wireplumber
     ncmpc
     yt-dlp
-    ffmpeg
+    ffmpeg-full
     armcord
     btop
     killall
@@ -84,6 +84,12 @@ in {
     craftos-pc
     virt-manager
     sccache
+    blender
+    pulseaudio # for pactl
+    gnome.gnome-calculator
+    wine
+    winetricks
+    p7zip
   ];
 
   gtk = {

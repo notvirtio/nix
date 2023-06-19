@@ -58,7 +58,13 @@
   programs.hyprland.nvidiaPatches = true;
 
   services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.sddm = {
+    enable = true;
+    settings.Autologin = {
+      User = "virtio";
+      Session = "Hyprland.desktop";
+    };
+  };
 
   # TODO: Set your hostname
   networking.hostName = "NixBTW";
