@@ -1,5 +1,6 @@
 {
   hyprland = import ./hyprland;
+  bspwm = import ./bspwm;
   foot = import ./foot;
   alacritty = import ./alacritty;
   tmux = import ./tmux;
@@ -10,6 +11,7 @@
   git = import ./git;
   neovim = import ./nvim;
   rofi = import ./rofi;
-  fish = import ./fish;
+  shell = import ./shell;
   mako = import ./mako;
+  qute = import ./qute;
 }

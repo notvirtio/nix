@@ -12,6 +12,13 @@ let
     grim -g "$win" - | tee ~/pics/sc/$name.png | wl-copy -t image/png
     find ~/pics/sc -size 0 -delete
   '';
+  xsc = pkgs.writeShellScriptBin "xsc" ''
+    if [[ "$1" == "win" ]]; then
+      maim -Bi "$(xdotool selectwindow)" | tee ~/pics/sc/$(date +%s).png | xclip -sel clip -t image/png
+    else
+      maim -Bs | tee ~/pics/sc/$(date +%s).png | xclip -sel clip -t image/png
+    fi
+  '';
   clip = pkgs.writeShellScriptBin "clip" ''
     wf-recorder -g "0,0 1920x1080" -c h264_nvenc -f $HOME/clips/`(date +%s)`.mp4 -a
   '';
@@ -43,13 +50,15 @@ let
 in {
   home.packages = with pkgs; [
     ncmpc-wrap
+    xsc
     sc
     scwin
     clip
     config-reload
     hypr-toggle
     # dependencies
+    maim
     jq
-    pavucontrol
+    xdotool
   ];
 }

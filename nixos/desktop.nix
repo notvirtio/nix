@@ -33,7 +33,9 @@
       # })
     ];
     # Configure your nixpkgs instance
-    config = { allowUnfree = true; };
+    config = {
+      allowUnfree = true;
+    };
   };
 
   nix = {
@@ -52,18 +54,17 @@
     };
   };
 
-  # FIXME: Add the rest of your current configuration
+  services.xserver.windowManager.bspwm.enable = true;
   programs.hyprland.enable = true;
-  #programs.hyprland.package = pkgs.hyprland-nvidia;
   programs.hyprland.nvidiaPatches = true;
 
   services.xserver.enable = true;
   services.xserver.displayManager.sddm = {
     enable = true;
-    settings.Autologin = {
-      User = "virtio";
-      Session = "hyprland.desktop";
-    };
+    #settings.Autologin = {
+    #  User = "virtio";
+    #  Session = "hyprland.desktop";
+    #};
   };
 
   # TODO: Set your hostname
@@ -79,11 +80,11 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  programs.fish.enable = true;
+  programs.zsh.enable = true;
   users.users.virtio = {
     isNormalUser = true;
     extraGroups = [ "wheel" "uucp" "docker" "libvirtd" ];
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
   programs.dconf.enable = true;
 
@@ -127,6 +128,10 @@
     opengl = {
       enable = true;
       driSupport32Bit = true;
+      extraPackages = with pkgs; [
+      vaapiVdpau
+      libvdpau-va-gl
+      ];
     };
     opentabletdriver = { enable = true; };
   };
@@ -147,7 +152,7 @@
     '';
   };
 
-  fonts.fonts = with pkgs; [ (nerdfonts.override { fonts = [ "Iosevka" ]; }) ];
+  fonts.fonts = with pkgs; [ (nerdfonts.override { fonts = [ "Mononoki" ]; }) ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.11";

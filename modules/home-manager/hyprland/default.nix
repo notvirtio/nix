@@ -2,13 +2,13 @@
 
 let
   inherit (nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
-  #wallpaper = nixWallpaperFromScheme {
-  #  scheme = config.colorScheme;
-  #  width = 1920;
-  #  height = 1080;
-  #  logoScale = 6.0;
-  #};
-  wallpaper = "~/pics/bgs/current.png";
+  wallpaper = nixWallpaperFromScheme {
+    scheme = config.colorScheme;
+    width = 1920;
+    height = 1080;
+    logoScale = 6.0;
+  };
+  #wallpaper = "~/pics/bgs/current.png";
   colors = config.colorScheme.colors;
 in {
 
@@ -26,7 +26,8 @@ in {
     systemdIntegration = true;
     nvidiaPatches = true;
     extraConfig = ''
-      exec-once = hyprpaper
+      exec-once=hyprpaper
+      exec-once=armcord
       exec-once=[workspace special; size 75% 20%;move 12.5% 40] alacritty -e tmux
       bind=SUPER, b, togglespecialworkspace
       bind=SUPERSHIFT, b, movetoworkspacesilent, special
@@ -51,7 +52,7 @@ in {
       bind=SUPER, return, exec, alacritty -e tmux
       bind=SUPERSHIFT, return, exec, alacritty -e tmux attach
       bind=SUPER, space, exec, rofi -show drun
-      bind=SUPER, p, exec, qutebrowser
+      bind=SUPER, p, exec, firefox
       bind=SUPER, l, exec, sc
       bind=SUPERSHIFT, l, exec, scwin
       bind=SUPER, c, exec, alacritty -T TermFloat -e clip
@@ -109,7 +110,7 @@ in {
       }
 
       input {
-        kb_options = caps:escape, grp:alt_shift_toggle
+        kb_options = caps:escape, grp:alt_shift_toggle, compose:rctrl
         kb_layout = us, us, ru
         kb_variant = dvorak,
         accel_profile = flat

@@ -14,11 +14,9 @@ in {
     baseIndex = 1;
     extraConfig = ''
       set-option -g status-position top
-      set -g default-terminal "screen-256color"
+      set-option -ga terminal-overrides ",alacritty:Tc"
+      set -g default-terminal "alacritty"
       unbind r
-
-      set -g window-style 'fg=terminal,bg=terminal'
-      set -g window-active-style 'fg=terminal,bg=terminal'
 
       unbind v
       unbind h

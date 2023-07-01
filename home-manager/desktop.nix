@@ -6,6 +6,7 @@ in {
   imports = [
     nix-colors.homeManagerModules.default
     outputs.homeManagerModules.hyprland
+    outputs.homeManagerModules.bspwm
     outputs.homeManagerModules.alacritty
     outputs.homeManagerModules.tmux
     outputs.homeManagerModules.rofi
@@ -14,11 +15,11 @@ in {
     outputs.homeManagerModules.rustup
     outputs.homeManagerModules.git
     outputs.homeManagerModules.neovim
-    outputs.homeManagerModules.fish
+    outputs.homeManagerModules.shell
     outputs.homeManagerModules.mako
   ];
 
-  colorScheme = nix-colors.colorSchemes.ayu-dark;
+  colorScheme = nix-colors.colorSchemes.nord;
 
   nixpkgs = {
     overlays = [ outputs.overlays.additions ];
@@ -38,10 +39,9 @@ in {
   programs.git.enable = true;
 
   home.packages = with pkgs; [
-    discord
     neofetch
+    firefox-bin
     hyprpaper
-    cava
     slurp
     grim
     wl-clipboard
@@ -79,7 +79,6 @@ in {
     protontricks
     fzf
     sshfs
-    craftos-pc
     virt-manager
     sccache
     blender
@@ -88,8 +87,13 @@ in {
     wine
     winetricks
     p7zip
-    qutebrowser
+    craftos-pc
+    pavucontrol
+    nvtop
+    ghidra
   ];
+
+  home.file.".mozilla/native-messaging-hosts/ff2mpv.json".source = "${pkgs.ff2mpv}/lib/mozilla/native-messaging-hosts/ff2mpv.json";
 
   gtk = {
     enable = true;

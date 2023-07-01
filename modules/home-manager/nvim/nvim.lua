@@ -16,7 +16,8 @@ vim.opt.backup = false
 
 vim.g.mapleader = " "
 
-vim.cmd("set cb=unnamedplus")
+vim.cmd("set cb+=unnamedplus")
+vim.cmd("set so=100")
 
 local function setKeys(keys)
     for k, v in pairs(keys) do

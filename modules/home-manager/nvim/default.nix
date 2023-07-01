@@ -35,7 +35,11 @@ in {
     defaultEditor = true;
   };
 
-  home.packages = [ pkgs.neovide ];
+  home.packages = with pkgs; [
+    wget
+    unzip
+    tree-sitter
+  ];
   xdg.desktopEntries = {
     neovide = {
       name = "Neovide";

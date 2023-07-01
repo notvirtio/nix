@@ -2,28 +2,35 @@
 
 let inherit (nix-colors.lib-contrib { inherit pkgs; }) shellThemeFromScheme;
 in {
-  programs.fish.enable = true;
-  programs.starship.enable = true;
+  home.packages = with pkgs; [
+    thefuck
+  ];
+  programs.zsh.enable = true;
+  #programs.starship.enable = true;
 
   # extra stuff
   programs.bat.enable = true;
   programs.exa.enable = true;
 
-  programs.fish = {
+  programs.zsh = {
     shellAliases = {
       lg = "lazygit";
       v = "nvim";
       cat = "bat";
       ls = "exa -lh";
     };
+    
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "thefuck" "rust" ];
+      theme = "avit";
+    };
 
-    interactiveShellInit = ''
-      sh ${shellThemeFromScheme { scheme = config.colorScheme; }}
+    initExtra = ''
       set PATH "$HOME/.cargo/bin:$PATH"
       export RUSTC_WRAPPER="$(whereis sccache | awk '{ print $2 }')"
       export NIXPKGS_ALLOW_UNFREE=1
       export CARGO_INCREMENTAL=0
-      starship init fish | source
     '';
 
   };
