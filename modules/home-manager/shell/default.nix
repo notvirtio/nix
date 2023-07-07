@@ -4,7 +4,7 @@ let inherit (nix-colors.lib-contrib { inherit pkgs; }) shellThemeFromScheme;
 in {
   home.packages = with pkgs; [ thefuck ];
   programs.zsh.enable = true;
-  #programs.starship.enable = true;
+  programs.starship.enable = true;
 
   # extra stuff
   programs.bat.enable = true;
@@ -18,17 +18,12 @@ in {
       ls = "exa -lh";
     };
 
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "thefuck" "rust" ];
-      theme = "avit";
-    };
-
     initExtra = ''
       export PATH="$HOME/.cargo/bin:$PATH"
-      export RUSTC_WRAPPER="$(whereis sccache | awk '{ print $2 }')"
+      export RUSTC_WRAPPER=$(where sccache)
       export NIXPKGS_ALLOW_UNFREE=1
       export CARGO_INCREMENTAL=0
+      eval $(starship init zsh)
     '';
 
   };
