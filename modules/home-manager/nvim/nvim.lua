@@ -111,13 +111,8 @@ do
   require("lualine").setup {
     globalstatus = true,
     extensions = {
-      "nvim-tree",
       "quickfix",
       "symbols-outline"
-    },
-
-    ignore_focus = {
-      "NvimTree"
     },
 
     sections = {
@@ -187,12 +182,6 @@ do
   vim.g.loaded_netrwPlugin = 1
 
   vim.opt.termguicolors = true
-
-  require("nvim-tree").setup {
-      sort_by = "case_sensetive"
-  }
-
-  vim.keymap.set("n", "<leader>v", function() vim.cmd("NvimTreeToggle") end)
 end
 
 do

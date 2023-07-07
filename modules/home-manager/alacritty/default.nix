@@ -8,7 +8,7 @@ in {
 
     font = {
       normal.family = "Mononoki Nerd Font";
-      size = 18;
+      size = 12;
     };
 
     cursor.shape = "Underline";

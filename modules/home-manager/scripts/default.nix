@@ -27,10 +27,6 @@ let
     hyprpaper &
     tmux source ~/.config/tmux/tmux.conf
   '';
-  ncmpc-wrap = pkgs.writeShellScriptBin "ncmpc-wrap" ''
-    #!/usr/bin/env sh
-    ncmpc -h 127.0.0.1 --no-colors
-  '';
   hypr-toggle = pkgs.writeShellScriptBin "hypr-toggle" ''
     #!/usr/bin/env sh
     HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==2{print $2}')
@@ -49,7 +45,6 @@ let
   '';
 in {
   home.packages = with pkgs; [
-    ncmpc-wrap
     xsc
     sc
     scwin

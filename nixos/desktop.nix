@@ -33,9 +33,7 @@
       # })
     ];
     # Configure your nixpkgs instance
-    config = {
-      allowUnfree = true;
-    };
+    config = { allowUnfree = true; };
   };
 
   nix = {
@@ -128,10 +126,7 @@
     opengl = {
       enable = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [
-      vaapiVdpau
-      libvdpau-va-gl
-      ];
+      extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl ];
     };
     opentabletdriver = { enable = true; };
   };
@@ -153,6 +148,8 @@
   };
 
   fonts.fonts = with pkgs; [ (nerdfonts.override { fonts = [ "Mononoki" ]; }) ];
+
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.11";

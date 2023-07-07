@@ -27,8 +27,8 @@ in {
     nvidiaPatches = true;
     extraConfig = ''
       exec-once=hyprpaper
-      exec-once=armcord
       exec-once=[workspace special; size 75% 20%;move 12.5% 40] alacritty -e tmux
+      exec-once=pcmanfm --daemon-mode
       bind=SUPER, b, togglespecialworkspace
       bind=SUPERSHIFT, b, movetoworkspacesilent, special
 
@@ -56,7 +56,7 @@ in {
       bind=SUPER, l, exec, sc
       bind=SUPERSHIFT, l, exec, scwin
       bind=SUPER, c, exec, alacritty -T TermFloat -e clip
-      bind=SUPER, r, exec, alacritty -T TermFloat -e ncmpc-wrap
+      bind=SUPER, r, exec, alacritty -T TermFloat -e ncmpcpp
       bind=SUPER, u, exec, pcmanfm
       bind=SUPER, q, killactive
       bind=SUPER, MINUS, exec, config-reload

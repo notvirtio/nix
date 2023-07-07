@@ -1,6 +1,7 @@
 { config, lib, pkgs, nix-colors, ... }:
 
-let inherit (nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
+let
+  inherit (nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
   wallpaper = nixWallpaperFromScheme {
     scheme = config.colorScheme;
     width = 1920;
@@ -9,10 +10,7 @@ let inherit (nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
   };
   colors = config.colorScheme.colors;
 in {
-  home.packages = with pkgs; [
-    xclip
-    feh
-  ];
+  home.packages = with pkgs; [ xclip feh ];
   services.picom.enable = true;
   xsession.windowManager.bspwm = {
     enable = true;
@@ -27,7 +25,7 @@ in {
     };
     monitors = {
       HDMI-0 = [ "1" "2" "3" "4" "5" ];
-      HDMI-1 = [ "6" "7" "8" "9" "10"];
+      HDMI-1 = [ "6" "7" "8" "9" "10" ];
     };
     startupPrograms = [
       "armcord"
@@ -37,30 +35,27 @@ in {
       "feh --bg-scale ${wallpaper}"
       "xsetroot -cursor_name left_ptr"
     ];
-    rules = {
-      "TermFloat" = {
-        state = "floating";
-      };
-    };
+    rules = { "TermFloat" = { state = "floating"; }; };
   };
   services.sxhkd = {
     enable = true;
     keybindings = {
-      "super + Escape"              = "pkill -USR1 -x sxhkd";
-      "super + Return"              = "alacritty -e tmux";
-      "super + shift + Return"      = "alacritty -e tmux attach";
-      "super + c"                   = "gnome-calculator";
-      "super + space"               = "rofi -show drun";
-      "super + w"                   = "firefox";
-      "super + {_,shift +} p"       = "xsc {win,sel}";
-      "super + o"                   = "alacritty --class TermFloat -e ncmpc-wrap";
-      "super + f"                   = "pcmanfm";
-      "super + {_,shift +} x"       = "bspc node -{c,k}";
-      "super + {t,s,m}"             = "bspc node -t {tiled,floating,fullscreen}";
+      "super + Escape" = "pkill -USR1 -x sxhkd";
+      "super + Return" = "alacritty -e tmux";
+      "super + shift + Return" = "alacritty -e tmux attach";
+      "super + c" = "gnome-calculator";
+      "super + space" = "rofi -show drun";
+      "super + w" = "firefox";
+      "super + {_,shift +} p" = "xsc {win,sel}";
+      "super + o" = "alacritty --class TermFloat -e ncmpcpp";
+      "super + f" = "pcmanfm";
+      "super + {_,shift +} x" = "bspc node -{c,k}";
+      "super + {t,s,m}" = "bspc node -t {tiled,floating,fullscreen}";
       "super + {_,shift +} {1-9,0}" = "bspc {desktop -f,node -d} '^{1-9,10}'";
-      "super + {h,j,k,l}"           = "bspc node -f {west,south,north,east} --follow";
-      "super + shift + {h,j,k,l}"   = "bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}";
-      "super + minus"               = "config-reload";
+      "super + {h,j,k,l}" = "bspc node -f {west,south,north,east} --follow";
+      "super + shift + {h,j,k,l}" =
+        "bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}";
+      "super + minus" = "config-reload";
     };
   };
 }

@@ -10,7 +10,6 @@ in {
       impatient-nvim
       vim-numbertoggle
       lualine-nvim
-      nvim-tree-lua
       harpoon
       presence-nvim
       fennel-vim
@@ -35,11 +34,7 @@ in {
     defaultEditor = true;
   };
 
-  home.packages = with pkgs; [
-    wget
-    unzip
-    tree-sitter
-  ];
+  home.packages = with pkgs; [ wget unzip tree-sitter lua-language-server ];
   xdg.desktopEntries = {
     neovide = {
       name = "Neovide";

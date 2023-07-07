@@ -19,7 +19,7 @@ in {
     outputs.homeManagerModules.mako
   ];
 
-  colorScheme = nix-colors.colorSchemes.nord;
+  colorScheme = nix-colors.colorSchemes.rose-pine-moon;
 
   nixpkgs = {
     overlays = [ outputs.overlays.additions ];
@@ -46,7 +46,7 @@ in {
     grim
     wl-clipboard
     wireplumber
-    ncmpc
+    ncmpcpp
     yt-dlp
     ffmpeg-full
     armcord
@@ -59,22 +59,17 @@ in {
     rust-analyzer
     imagemagick
     qbittorrent
-    telegram-desktop
     mpv
     wf-recorder
     imv
     prismlauncher
     pkg-config
-    obs-studio
     pcmanfm
     bitwarden
-    tic80
     gimp
     steam
-    gzdoom
     gamescope
     qpwgraph
-    cool-retro-term
     ark
     protontricks
     fzf
@@ -84,16 +79,19 @@ in {
     blender
     pulseaudio # for pactl
     gnome.gnome-calculator
-    wine
+    wine64
     winetricks
     p7zip
     craftos-pc
     pavucontrol
     nvtop
     ghidra
+    ffmpegthumbnailer
+    nixfmt
   ];
 
-  home.file.".mozilla/native-messaging-hosts/ff2mpv.json".source = "${pkgs.ff2mpv}/lib/mozilla/native-messaging-hosts/ff2mpv.json";
+  home.file.".mozilla/native-messaging-hosts/ff2mpv.json".source =
+    "${pkgs.ff2mpv}/lib/mozilla/native-messaging-hosts/ff2mpv.json";
 
   gtk = {
     enable = true;
