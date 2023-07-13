@@ -41,13 +41,13 @@ in {
     enable = true;
     keybindings = {
       "super + Escape" = "pkill -USR1 -x sxhkd";
-      "super + Return" = "alacritty -e tmux";
-      "super + shift + Return" = "alacritty -e tmux attach";
+      "super + Return" = "foot -e tmux";
+      "super + shift + Return" = "foot -e tmux attach";
       "super + c" = "gnome-calculator";
       "super + space" = "rofi -show drun";
       "super + w" = "firefox";
       "super + {_,shift +} p" = "xsc {win,sel}";
-      "super + o" = "alacritty --class TermFloat -e ncmpcpp";
+      "super + o" = "foot --class TermFloat -e ncmpcpp";
       "super + f" = "pcmanfm";
       "super + {_,shift +} x" = "bspc node -{c,k}";
       "super + {t,s,m}" = "bspc node -t {tiled,floating,fullscreen}";

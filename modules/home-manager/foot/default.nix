@@ -5,7 +5,7 @@ in {
   programs.foot = {
     enable = true;
     settings = {
-      main = { font = "Mononoki Nerd Font:size=18"; };
+      main = { font = "Agave Nerd Font:size=14"; };
 
       cursor = { style = "underline"; };
 
@@ -14,21 +14,21 @@ in {
         foreground = "${colors.base05}";
 
         regular0 = "${colors.base00}";
-        regular1 = "${colors.base01}";
-        regular2 = "${colors.base02}";
-        regular3 = "${colors.base03}";
-        regular4 = "${colors.base04}";
-        regular5 = "${colors.base05}";
-        regular6 = "${colors.base06}";
-        regular7 = "${colors.base07}";
+        regular1 = "${colors.base08}";
+        regular2 = "${colors.base0B}";
+        regular3 = "${colors.base0A}";
+        regular4 = "${colors.base0D}";
+        regular5 = "${colors.base0E}";
+        regular6 = "${colors.base0C}";
+        regular7 = "${colors.base05}";
 
-        bright0 = "${colors.base08}";
+        bright0 = "${colors.base03}";
         bright1 = "${colors.base09}";
-        bright2 = "${colors.base0A}";
-        bright3 = "${colors.base0B}";
-        bright4 = "${colors.base0C}";
-        bright5 = "${colors.base0D}";
-        bright6 = "${colors.base0E}";
+        bright2 = "${colors.base01}";
+        bright3 = "${colors.base02}";
+        bright4 = "${colors.base04}";
+        bright5 = "${colors.base06}";
+        bright6 = "${colors.base0F}";
         bright7 = "${colors.base0F}";
       };
 

@@ -7,8 +7,8 @@ in {
     window.opacity = 0.8;
 
     font = {
-      normal.family = "Mononoki Nerd Font";
-      size = 12;
+      normal.family = "Agave Nerd Font";
+      size = 14;
     };
 
     cursor.shape = "Underline";

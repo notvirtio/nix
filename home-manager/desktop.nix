@@ -7,7 +7,7 @@ in {
     nix-colors.homeManagerModules.default
     outputs.homeManagerModules.hyprland
     outputs.homeManagerModules.bspwm
-    outputs.homeManagerModules.alacritty
+    outputs.homeManagerModules.foot
     outputs.homeManagerModules.tmux
     outputs.homeManagerModules.rofi
     outputs.homeManagerModules.scripts
@@ -19,7 +19,7 @@ in {
     outputs.homeManagerModules.mako
   ];
 
-  colorScheme = nix-colors.colorSchemes.rose-pine-moon;
+  colorScheme = nix-colors.colorSchemes.rose-pine;
 
   nixpkgs = {
     overlays = [ outputs.overlays.additions ];
@@ -58,7 +58,6 @@ in {
     yue
     rust-analyzer
     imagemagick
-    qbittorrent
     mpv
     wf-recorder
     imv
@@ -68,7 +67,6 @@ in {
     bitwarden
     gimp
     steam
-    gamescope
     qpwgraph
     ark
     protontricks
@@ -88,6 +86,7 @@ in {
     ghidra
     ffmpegthumbnailer
     nixfmt
+    piper
   ];
 
   home.file.".mozilla/native-messaging-hosts/ff2mpv.json".source =

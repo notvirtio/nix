@@ -59,10 +59,10 @@
   services.xserver.enable = true;
   services.xserver.displayManager.sddm = {
     enable = true;
-    #settings.Autologin = {
-    #  User = "virtio";
-    #  Session = "hyprland.desktop";
-    #};
+    settings.Autologin = {
+      User = "virtio";
+      Session = "hyprland.desktop";
+    };
   };
 
   # TODO: Set your hostname
@@ -81,13 +81,13 @@
   programs.zsh.enable = true;
   users.users.virtio = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "uucp" "docker" "libvirtd" ];
+    extraGroups = [ "wheel" "docker" "libvirtd" ];
     shell = pkgs.zsh;
   };
   programs.dconf.enable = true;
 
-  virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
+  virtualisation.docker.enable = true;
 
   sound.enable = false;
 
@@ -99,8 +99,12 @@
     pulse.enable = true;
     jack.enable = true;
   };
+  services.ratbagd.enable = true;
 
-  networking.firewall = { allowedUDPPorts = [ 51820 ]; };
+  networking.firewall = {
+    allowedUDPPorts = [ 51820 ];
+    allowedTCPPorts = [ 8000 ];
+  };
   networking.wg-quick.interfaces = {
     wg0 = {
       address = [ "10.66.66.10/32" "fd42:42:42::10/128" ];
@@ -131,7 +135,6 @@
     opentabletdriver = { enable = true; };
   };
 
-  services.mpd.user = "virtio";
   systemd.services.mpd.environment = { XDG_RUNTIME_DIR = "/run/user/1000"; };
 
   services.gvfs.enable = true;
@@ -139,6 +142,7 @@
   services.mpd = {
     enable = true;
     musicDirectory = "/home/virtio/music";
+    user = "virtio";
     extraConfig = ''
       audio_output {
         type "pipewire"
@@ -147,7 +151,7 @@
     '';
   };
 
-  fonts.fonts = with pkgs; [ (nerdfonts.override { fonts = [ "Mononoki" ]; }) ];
+  fonts.fonts = with pkgs; [ (nerdfonts.override { fonts = [ "Agave" ]; }) ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 

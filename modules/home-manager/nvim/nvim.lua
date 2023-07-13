@@ -17,7 +17,7 @@ vim.opt.backup = false
 vim.g.mapleader = " "
 
 vim.cmd("set cb+=unnamedplus")
-vim.cmd("set so=100")
+vim.cmd("set so=10")
 
 local function setKeys(keys)
     for k, v in pairs(keys) do
@@ -38,6 +38,7 @@ do
     ["<A-.>"] = ":BufferNext<CR>",
     ["<A-w>"] = ":BufferClose<CR>",
     ["<A-c>"] = ":BufferClose<CR>",
+    ["<C-b>"] = ":!make<CR>",
     ["<C-w>h"] = ":split<CR>",
     ["<A-Enter>"] = function() vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen end,
   }
@@ -105,7 +106,7 @@ end
 
 do
   local function icon()
-    return " "
+    return ">-<"
   end
 
   require("lualine").setup {
@@ -135,8 +136,8 @@ do
   local pres = require("presence")
   local files = require("presence.file_assets")
 
-  for k, v in pairs(files) do
-    files[k][2] = "https://github.com/notvirtio/nvim/raw/master/nixie.png"
+  for _, v in pairs(files) do
+    v[2] = "http://a.thevirt.ru/nvimicon.png"
   end
 
   pres.setup{
@@ -145,7 +146,7 @@ do
       file_assets = files,
       buttons = {
         {
-          label = "uwu",
+          label = "click for gex",
           url = "https://discord.gg/vzq5StnSjf"
         }
       }

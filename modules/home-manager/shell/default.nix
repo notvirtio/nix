@@ -6,9 +6,21 @@ in {
   programs.zsh.enable = true;
   programs.starship.enable = true;
 
+  home.file.".config/direnv/lib/use_flake.sh".text = ''
+    use_flake() {
+      watch_file flake.nix
+      watch_file flake.lock
+      eval "$(nix print-dev-env --profile "$(direnv_layout_dir)/flake-profile")"
+    }
+  '';
+
   # extra stuff
   programs.bat.enable = true;
   programs.exa.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   programs.zsh = {
     shellAliases = {
@@ -16,6 +28,13 @@ in {
       v = "nvim";
       cat = "bat";
       ls = "exa -lh";
+      useflake = "echo \"use flake\" > .envrc && direnv allow";
+    };
+
+    # just for the ctrl + left and right
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "thefuck" ];
     };
 
     initExtra = ''

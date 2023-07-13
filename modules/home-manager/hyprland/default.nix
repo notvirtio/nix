@@ -27,13 +27,19 @@ in {
     nvidiaPatches = true;
     extraConfig = ''
       exec-once=hyprpaper
-      exec-once=[workspace special; size 75% 20%;move 12.5% 40] alacritty -e tmux
+      exec-once=[workspace special; size 75% 20%;move 12.5% 40] foot -e tmux
       exec-once=pcmanfm --daemon-mode
+      exec-once=mpc play
       bind=SUPER, b, togglespecialworkspace
       bind=SUPERSHIFT, b, movetoworkspacesilent, special
 
-      animation=global, 1, 4, default
-      animation=workspaces, 1, 4, default, slidevert
+      bezier=easeoutback, 0.34, 1.5, 0.7, 0.97
+      animation=global, 1, 6, easeoutback
+      animation=workspaces, 1, 6, easeoutback, slidevert
+
+      decoration {
+        rounding = 12
+      }
 
       env = LIBVA_DRIVER_NAME, nvidia
       env = XDG_SESSION_TYPE, wayland
@@ -49,14 +55,14 @@ in {
 
       bind=SUPER, j, exec, gnome-calculator
       bind=SUPER, g, exec, hyprpicker -a
-      bind=SUPER, return, exec, alacritty -e tmux
-      bind=SUPERSHIFT, return, exec, alacritty -e tmux attach
+      bind=SUPER, return, exec, foot -e tmux
+      bind=SUPERSHIFT, return, exec, foot -e tmux attach
       bind=SUPER, space, exec, rofi -show drun
       bind=SUPER, p, exec, firefox
       bind=SUPER, l, exec, sc
       bind=SUPERSHIFT, l, exec, scwin
-      bind=SUPER, c, exec, alacritty -T TermFloat -e clip
-      bind=SUPER, r, exec, alacritty -T TermFloat -e ncmpcpp
+      bind=SUPER, c, exec, foot -T TermFloat -e clip
+      bind=SUPER, r, exec, foot -T TermFloat -e ncmpcpp
       bind=SUPER, u, exec, pcmanfm
       bind=SUPER, q, killactive
       bind=SUPER, MINUS, exec, config-reload
@@ -105,20 +111,11 @@ in {
         col.group_border=0xff${colors.base04}
       }
 
-      decoration {
-        rounding = 8
-      }
-
       input {
         kb_options = caps:escape, grp:alt_shift_toggle, compose:rctrl
         kb_layout = us, us, ru
         kb_variant = dvorak,
         accel_profile = flat
-      }
-
-      misc {
-        animate_manual_resizes = true
-        animate_mouse_windowdragging = true
       }
 
       monitor=HDMI-A-1, highres, 0x0, 1
